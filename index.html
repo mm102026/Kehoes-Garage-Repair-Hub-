@@ -1,0 +1,349 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kehoe’s Garage Repair Hub</title>
+<style>
+:root{--bg:#eef0ee;--card:#fff;--ink:#1c252e;--mute:#5d6b78;--line:#d5dad7;--bar:#1c252e;--haz:#f5b800;--red:#d62828;--redbg:#fde8e8;
+--s0:#64748b;--s1:#c98f00;--s2:#d62828;--s3:#0b84c6;--s4:#19903f;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12171c;--card:#1c242c;--ink:#eef2f5;--mute:#9aa7b3;--line:#33404b;--redbg:#3b1717;--bar:#0a0e12}}
+:root[data-theme="dark"]{--bg:#12171c;--card:#1c242c;--ink:#eef2f5;--mute:#9aa7b3;--line:#33404b;--redbg:#3b1717;--bar:#0a0e12}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.4 "Avenir Next","Segoe UI",system-ui,sans-serif}
+button{font:inherit;color:inherit;cursor:pointer;border:0;touch-action:manipulation}
+header{background:var(--bar);color:#fff;border-bottom:8px solid transparent;border-image:repeating-linear-gradient(-45deg,var(--haz) 0 14px,#1c252e 14px 28px) 8;padding:14px 12px 10px;position:sticky;top:env(safe-area-inset-top,0px);z-index:10}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bar);z-index:11}
+header h1,header p{margin-left:6px}
+header h1{margin:0;font-size:1.35rem;letter-spacing:.2px;display:flex;align-items:center;gap:10px}
+header h1 svg{width:30px;height:30px;flex:none}
+header p{margin:2px 0 0;color:#b9c4cd;font-size:.85rem}
+.tabs{display:flex;gap:8px;margin-top:12px}
+.tab{flex:1;min-height:60px;border-radius:14px;background:#2b3742;color:#dbe3e9;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:1.05rem}
+.tab svg{width:26px;height:26px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tab[aria-selected=true]{background:var(--haz);color:#1c252e}
+.sample{margin:8px 12px;padding:10px 14px;border-radius:12px;background:#fff6d6;color:#5a4400;border:2px dashed var(--haz);font-size:.9rem;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.sample button{min-height:44px;padding:0 14px;border-radius:10px;background:#5a4400;color:#fff6d6;font-weight:600;flex:none}
+main{padding:8px 12px 40px;max-width:1200px;margin:auto}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(310px,1fr))}
+.card{background:var(--card);border-radius:16px;border:1px solid var(--line);border-left:10px solid var(--c);padding:14px;position:relative}
+.card.late{border-color:var(--red);background:var(--redbg);border-left-color:var(--red)}
+.top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.reg{font-weight:800;letter-spacing:1px;background:#fff;color:#111;border:2px solid #111;border-radius:6px;padding:1px 10px;display:inline-block;box-shadow:inset 18px 0 0 -10px #1d4fb5;padding-left:14px}
+.job{color:var(--mute);font-size:.85rem;font-weight:600}
+.car{font-weight:700;margin-top:6px}.sub{color:var(--mute);font-size:.9rem}
+.badge{background:var(--c);color:#fff;border-radius:999px;padding:4px 12px;font-weight:700;font-size:.85rem;white-space:nowrap}
+.prog{display:flex;align-items:center;margin:12px 4px 6px}
+.dot{width:16px;height:16px;border-radius:50%;background:var(--line);flex:none;border:2px solid var(--card)}
+.dot.on{background:var(--c)}.dot.cur{box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 30%,transparent)}
+.seg{flex:1;height:6px;background:var(--line)}.seg.on{background:var(--c)}
+.mechs{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.mech{min-height:44px;padding:0 14px;border-radius:999px;background:transparent;border:2px solid var(--line);color:var(--mute);font-weight:600}
+.mech.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.go{width:100%;min-height:64px;border-radius:14px;background:var(--n);color:#fff;font-weight:800;font-size:1.1rem;margin-top:4px}
+.row2{display:flex;gap:8px;margin-top:8px}
+.go svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;vertical-align:-6px;margin-left:10px}
+.ghost{flex:1;min-height:52px;border-radius:12px;background:transparent;border:2px solid var(--line);font-weight:600}
+.ghost.sel{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.strip{display:flex;gap:8px;overflow-x:auto;padding:4px 0 10px}
+.chip{flex:none;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 14px;font-size:.9rem}
+.chip b{font-size:1.15rem;display:block}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:8px 0 14px}
+.tile{background:var(--card);border-radius:16px;padding:14px;border:2px solid var(--line)}
+.tile b{font-size:2.3rem;line-height:1;display:block}
+.tile.ready{border-color:var(--s4)}.tile.ready b{color:var(--s4)}
+.tile.bad.hot{border-color:var(--red);background:var(--redbg)}.tile.bad.hot b{color:var(--red)}
+.grp{margin-bottom:20px}
+.grp h2{font-size:1.1rem;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+.grp h2 i{width:14px;height:14px;border-radius:4px;background:var(--c)}
+.grp h2 span{color:var(--mute);font-weight:500}
+.empty{color:var(--mute);padding:10px 14px;border:2px dashed var(--line);border-radius:12px}
+.warn{color:var(--red);font-weight:800}
+.phone{max-width:460px;margin:10px auto}
+.wide{max-width:900px;margin:10px auto}
+.eyebrow{color:#0a7f7a;font-weight:800;font-size:.75rem;letter-spacing:1px;text-transform:uppercase}
+.lk{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end}
+.lk>div{flex:1;min-width:220px}
+.lk label{display:block;font-weight:700;font-size:.85rem;margin-bottom:6px}
+.lk .find{width:auto;flex:none;padding:0 28px;background:#1c252e;color:#fff;min-width:200px}
+.ph{color:var(--mute);font-weight:500;letter-spacing:0;font-size:1rem}
+.wide .keys{max-width:620px}
+.panel{background:var(--card);border-radius:20px;border:1px solid var(--line);padding:18px}
+.panel h2{margin:0 0 4px}
+.field{display:flex;gap:8px;margin:10px 0}
+.fbtn{flex:1;min-height:64px;border-radius:14px;background:var(--bg);border:3px solid var(--line);text-align:left;padding:6px 14px;font-weight:800;font-size:1.3rem;letter-spacing:2px}
+.fbtn small{display:block;font-size:.72rem;letter-spacing:0;color:var(--mute);font-weight:600}
+.fbtn.act{border-color:var(--haz)}
+.keys{display:grid;grid-template-columns:repeat(9,1fr);gap:6px;margin:10px 0}
+.keys.num{grid-template-columns:repeat(5,1fr)}
+.key{min-height:50px;border-radius:10px;background:var(--bg);border:1px solid var(--line);font-weight:700;font-size:1.1rem}
+.key.w{grid-column:span 2;background:var(--line)}
+.find{width:100%;min-height:64px;border-radius:14px;background:var(--haz);color:#1c252e;font-weight:800;font-size:1.15rem}
+.err{background:var(--redbg);color:var(--red);padding:10px 14px;border-radius:12px;margin-top:10px;font-weight:600}
+.note{background:var(--bg);border-left:6px solid var(--c);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:1.1rem}
+.steps{list-style:none;margin:16px 0;padding:0}
+.steps li{display:flex;gap:14px;align-items:center;min-height:50px;position:relative;color:var(--mute)}
+.steps li:before{content:"";width:20px;height:20px;border-radius:50%;background:var(--line);flex:none;z-index:1}
+.steps li:not(:last-child):after{content:"";position:absolute;left:9px;top:35px;width:3px;height:30px;background:var(--line)}
+.steps li.done{color:var(--ink)}.steps li.done:before,.steps li.done:after{background:var(--c)}
+.steps li.cur{color:var(--ink);font-weight:800;font-size:1.1rem}
+.steps li.cur:before{background:var(--c);transform:scale(1.3);box-shadow:0 0 0 5px color-mix(in srgb,var(--c) 30%,transparent)}
+.fbar{margin:0 0 14px}
+.fbar .ghost{min-height:64px;line-height:1.2}
+.ghost small{display:block;font-weight:500;opacity:.75}
+.ghost[data-a=back] svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;vertical-align:-5px;margin-right:8px}
+.fbar .ghost[data-k=r]{--k:#0b84c6}.fbar .ghost[data-k=s]{--k:#7c4dff}.fbar .ghost[data-k=t]{--k:#0b84c6}.fbar .ghost[data-k=m]{--k:#e8590c}
+.fbar .ghost[data-k]{border-bottom:5px solid var(--k)}
+.fbar .ghost svg{width:24px;height:24px;fill:none;stroke:var(--k,currentColor);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-6px;margin-right:6px}
+.fl-h{font-weight:700;margin:12px 0 6px;font-size:.95rem}
+.fl{display:flex;flex-wrap:wrap;gap:8px}
+.fc{min-height:52px;padding:0 18px;border-radius:999px;background:var(--card);border:2px solid var(--c,var(--line));font-weight:600}
+.fc.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fc.on[style]{background:var(--c);color:#fff;border-color:var(--c)}
+.fbar>.sub{margin-top:10px}
+.money{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;margin:10px 0;padding:10px 12px;background:var(--bg);border-radius:12px}
+.money small{display:block;color:var(--mute);font-size:.75rem}
+.money b{font-size:1.1rem}
+.pill{margin-left:auto;padding:4px 12px;border-radius:999px;font-weight:700;font-size:.85rem;color:#fff}
+.p0{background:#c98f00}.p1{background:#0b84c6}.p2{background:#19903f}
+.gh{display:flex;justify-content:space-between;align-items:center;margin:0 0 8px}
+.spill{background:var(--c);color:#fff;border-radius:999px;padding:6px 18px;font-weight:700}
+.cnt{background:var(--line);border-radius:999px;padding:4px 14px;font-weight:700;font-size:.85rem}
+.orow{background:var(--card);border:1px solid var(--line);border-left:10px solid var(--c);border-radius:14px;padding:14px;margin-bottom:10px}
+.orow.late{background:var(--redbg);border-color:var(--red);border-left-color:var(--red)}
+.ogrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px 20px;align-items:start}
+.orow .money{margin:0}
+.oact{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.oact .ghost{flex:1 1 180px;min-height:56px}
+.ghost.ok{background:var(--s4);border-color:var(--s4);color:#fff}
+.oact svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-5px;margin-right:8px}
+.sent{margin-top:10px;padding:10px 12px;border-radius:10px;background:var(--bg);border-left:6px solid var(--s4);font-size:.9rem}
+.paybox{border:2px solid var(--line);border-radius:14px;padding:12px;margin:0 0 14px}
+.ph2{font-weight:800;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.paybox .pill{margin-left:0}
+.paybox .money{margin:0 0 8px}
+.pgrid{grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}
+.prow{background:var(--bg);border-left:8px solid var(--c);border-radius:12px;padding:10px 12px;margin-top:10px}
+.prow.late{background:var(--redbg);border-left-color:var(--red)}
+.ptop{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.pst{background:var(--c);color:#fff;border-radius:999px;padding:3px 12px;font-weight:700;font-size:.85rem;white-space:nowrap}
+.prow .oact{margin-top:8px}
+.card .ghost svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-5px;margin-right:8px}
+@media (max-width:560px){.tab{flex-direction:column;gap:2px;font-size:.8rem;min-height:62px}.tab svg{width:24px;height:24px}}
+.foot{text-align:center;color:var(--mute);font-size:.8rem;margin-top:30px}
+</style>
+</head>
+<body>
+<header>
+<h1><svg viewBox="0 0 32 32" fill="none" stroke="#f5b800" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="4"/><path d="M16 4v8M16 20v8M4 16h8M20 16h8"/></svg>Kehoe’s Garage Repair Hub</h1>
+<p>Enniscorthy, Co. Wexford · internal alpha</p>
+<nav class="tabs" role="tablist" id="tabs"></nav>
+</header>
+<div class="sample"><span><b>Sample data.</b> Made-up jobs, customers and registrations for testing only.</span><button data-a="reset">Reset sample</button></div>
+<main id="app"></main>
+
+<script>
+const ST=['Booked in','Being checked','Waiting for parts','Being fixed','Ready to collect'];
+const MECH=['Declan','Paudie','Niall','Seán','Aoife'];
+const PAY=['Not set','Card','Cash','Invoice'];
+const KEY='kehoes-hub-alpha-v1';
+const D=864e5,H=36e5;
+const col=s=>`var(--s${s})`;
+const SUP=['Wexford Auto Factors','Dublin Parts Hub','Cork Trade Supplies','Main dealer'];
+const PT={4823:[['Clutch kit',SUP[1],1,72,-20],['Flywheel bolts',SUP[0],3,70,-60]],4825:[['Timing belt kit',SUP[1],2,26,20],['Water pump',SUP[0],0,0,null]],4828:[['Exhaust centre section',SUP[2],1,5,30]]};
+function seed(){const n=Date.now();const j=(id,reg,car,cust,work,stage,m,ago,contact,part,pay,del)=>({id,reg,car,cust,work,stage,m,at:n-ago,lc:n-contact,part,pay,del,done:false});
+return[
+j(4821,'191WX2045','2019 Ford Focus','M. Doyle','Full service and brake pads',4,[0],5*H,4*H,'',1,0),
+j(4822,'152D18877','2015 Toyota Corolla','S. Byrne','NCT prep and tracking',3,[1,2],3*H,6*H,'',0,0),
+j(4823,'172KK3310','2017 VW Golf','A. Walsh','Clutch replacement',2,[1],3*D+4*H,3*D,'clutch kit',2,1),
+j(4824,'201WX1190','2020 Nissan Qashqai','P. Murphy','Diagnostics, warning light',1,[3],2*H,1*H,'',0,0),
+j(4825,'131WD6524','2013 Opel Astra','K. Kinsella','Timing belt',2,[2],1*D+2*H,1*D,'timing belt kit',3,0),
+j(4826,'221WX507','2022 Hyundai Tucson','R. Nolan','Annual service',0,[],20*60000,20*60000,'',1,0),
+j(4827,'182C9921','2018 Skoda Octavia','E. Roche','Brake discs and pads',4,[4],1*D+3*H,5*D,'',2,1),
+j(4828,'162WX3402','2016 Renault Clio','T. Furlong','Exhaust repair',2,[0,4],4*H,2*H,'exhaust section',0,0)].map(x=>{const c={4821:[285,0],4822:[90,0],4823:[890,445],4824:[65,0],4825:[520,260],4826:[210,0],4827:[340,340],4828:[185,0]}[x.id];return{...x,cost:c[0],paid:c[1],parts:(PT[x.id]||[]).map((p,i)=>({id:x.id*10+i,name:p[0],sup:p[1],st:p[2],ord:p[3]?Date.now()-p[3]*H:0,eta:p[4]==null?0:Date.now()+p[4]*H}))}})}
+let jobs,ui={tab:'workshop',f:{s:'all',t:'all',m:'all'},fo:false,pf:'all',padd:0,pr:'all',pm:'all',po:'',field:'id',id:'',reg:'',found:null,err:''};
+try{jobs=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+if(!Array.isArray(jobs)||jobs.some(x=>x.cost==null||!x.parts))jobs=seed();
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(jobs))}catch(e){}};
+const days=t=>(Date.now()-t)/D;
+const PS=['Unpaid','Deposit paid','Paid in full'];
+const eur=n=>'€'+n.toLocaleString('en-IE');
+const bal=j=>j.cost-j.paid;
+const ps=j=>j.paid<=0?0:j.paid>=j.cost?2:1;
+const ago=t=>{const d=Date.now()-t;return d<H?'just now':d<D?Math.floor(d/H)+'h ago':Math.floor(d/D)+'d ago'};
+const late=j=>j.stage===2&&days(j.at)>2&&!allIn(j);
+const pn=j=>{const o=(j.parts||[]).filter(p=>p.st<3).map(p=>p.name.toLowerCase());return o.length?o.join(', '):(j.part||'parts')};
+const allIn=j=>!!(j.parts&&j.parts.length&&j.parts.every(p=>p.st===3));
+const etaOf=j=>{const e=(j.parts||[]).filter(p=>p.st>0&&p.st<3&&p.eta).map(p=>p.eta);return e.length?Math.max(...e):0};
+const sd=t=>new Date(t).toLocaleDateString('en-IE',{weekday:'long',day:'numeric',month:'long'});
+const waitTxt=j=>{if(allIn(j))return 'All parts have arrived';const d=Math.floor(days(j.at));return 'Waiting for '+pn(j)+': '+(d<1?'since today':d+(d==1?' day':' days'))};
+const quiet=j=>days(j.lc)>=2;
+const live=()=>jobs.filter(j=>!j.done);
+const find=id=>jobs.find(j=>j.id==id);
+const ic=p=>`<svg viewBox="0 0 24 24" aria-hidden="true">${p}</svg>`;
+const make=j=>j.car.split(' ')[1];
+const vis=()=>{const f=ui.f;return live().filter(j=>(f.s==='all'||j.stage==f.s)&&(f.t==='all'||make(j)===f.t)&&(f.m==='all'||(f.m==='none'?!j.m.length:j.m.includes(+f.m))))};
+function filters(){const f=ui.f,l=live(),n=Object.values(f).filter(v=>v!=='all').length;
+const chips=(k,o)=>ui.fo!==k?'':`<div class="fl">${[['all','All ('+l.length+')']].concat(o).map(x=>`<button class="fc ${String(f[k])===String(x[0])?'on':''}" ${x[2]?`style="--c:${x[2]}"`:''} data-a="flt" data-k="${k}" data-v="${x[0]}">${x[1]}</button>`).join('')}</div>`;
+const makes=[...new Set(l.map(make))].sort();
+const lab=k=>f[k]==='all'?'All ('+l.length+')':k==='s'?ST[f[k]]+' ('+l.filter(j=>j.stage==f[k]).length+')':k==='m'?(f[k]==='none'?'Unassigned ('+l.filter(j=>!j.m.length).length+')':MECH[f[k]]+' ('+l.filter(j=>j.m.includes(+f[k])).length+')'):f[k]+' ('+l.filter(j=>make(j)===f[k]).length+')';
+return `<div class="fbar"><div class="row2">${[['s','Status',ic('<circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>')],['t','Car make',ic('<path d="M3 16v-4l2-5h14l2 5v4zM3 16v2M21 16v2"/><circle cx="7.5" cy="15" r="1.3"/><circle cx="16.5" cy="15" r="1.3"/>')],['m','Mechanic',ic('<path d="M3 17h18M5 17a7 7 0 0 1 14 0M12 6v5M9 20h6"/>')]].map(x=>`<button class="ghost ${ui.fo===x[0]?'sel':''}" data-a="fopen" data-k="${x[0]}">${x[2]}${x[1]}<small>${lab(x[0])}</small></button>`).join('')}</div>${n?'<div class="row2"><button class="ghost" data-a="fclr">Clear filters</button></div>':''}${ui.fo?''+chips('s',ST.map((s,i)=>[i,s+' ('+l.filter(j=>j.stage===i).length+')',col(i)]))+''+chips('m',MECH.map((m,i)=>[i,m+' ('+l.filter(j=>j.m.includes(i)).length+')']).concat([['none','Unassigned ('+l.filter(j=>!j.m.length).length+')']]))+''+chips('t',makes.map(m=>[m,m+' ('+l.filter(j=>make(j)===m).length+')'])):''}<div class="sub">Showing ${vis().length} of ${l.length} cars</div></div>`}
+const plate=j=>`<span class="reg">${j.reg}</span>`;
+const note=j=>[`Your car is booked in with us. A mechanic will check it shortly.`,`A mechanic is checking your car to find out exactly what it needs.`,allIn(j)?`Your parts have arrived and your car is next in line to be repaired.`:`We are waiting for parts to arrive (${pn(j)}).${etaOf(j)>Date.now()?' We expect them by '+sd(etaOf(j))+'.':''} We will be in touch as soon as they are here.`,`Your car is being repaired right now.`,`Good news, your car is ready. Please collect it during opening hours${j.del?', or we will arrange delivery':''}.`][j.stage];
+const prog=j=>`<div class="prog" style="--c:${col(j.stage)}">${ST.map((s,i)=>(i?`<div class="seg ${i<=j.stage?'on':''}"></div>`:'')+`<div class="dot ${i<=j.stage?'on':''} ${i==j.stage?'cur':''}" title="${s}"></div>`).join('')}</div>`;
+const mechTxt=j=>j.m.length?j.m.map(i=>MECH[i]).join(' & '):'No mechanic yet';
+
+const PST=['To order','Ordered','On the way','Arrived'];
+const PC=['#64748b','#c98f00','#0b84c6','#19903f'];
+const PNEXT=['Mark as ordered','Mark as on the way','Mark as arrived'];
+const PRE=['Brake pads','Brake discs','Clutch kit','Timing belt kit','Battery','Exhaust section','Alternator','Tyres','Filters and oil','Other part'];
+const pLate=p=>p.st>0&&p.st<3&&p.eta&&p.eta<Date.now();
+const eD=t=>{const d=Math.round((t-Date.now())/D),a=Math.abs(d),u=a+(a==1?' day':' days');return d<0?u+' late':d===0?'due today':'due in '+u};
+const sh=t=>new Date(t).toLocaleDateString('en-IE',{weekday:'short',day:'numeric',month:'short'});
+const etaTxt=p=>p.st===0?'Not ordered yet':p.st===3?'Arrived':'ETA '+sh(p.eta)+' ('+eD(p.eta)+')';
+const prow=j=>p=>{const d=`data-id="${j.id}" data-p="${p.id}"`;return `<div class="prow ${pLate(p)?'late':''}" style="--c:${PC[p.st]}"><div class="ptop"><b>${p.name}</b><span class="pst">${PST[p.st]}</span></div>
+<div class="sub ${pLate(p)?'warn':''}">${p.sup} · ${etaTxt(p)}</div>
+<div class="oact">${p.st<3?`<button class="ghost ok" data-a="pnext" ${d} style="background:${PC[p.st+1]};border-color:${PC[p.st+1]};color:#fff">${PNEXT[p.st]}</button>`:''}${p.st===1||p.st===2?`<button class="ghost" data-a="peta" ${d} data-d="-1">ETA 1 day earlier</button><button class="ghost" data-a="peta" ${d} data-d="1">ETA 1 day later</button>`:''}${p.st<3?`<button class="ghost" data-a="psup" ${d}>Supplier: ${p.sup}</button>`:''}${p.st>0?`<button class="ghost" data-a="pback" ${d}>${ic('<path d="M19 12H5M11 6l-6 6 6 6"/>')}Back to: ${PST[p.st-1]}</button>`:''}<button class="ghost" data-a="pdel" ${d}>Remove</button></div></div>`};
+function parts(){
+const lv=live(),all=lv.flatMap(j=>(j.parts||[]).map(p=>({p,j})));
+const f=ui.pf,fn=f==='all'||f==='late'?f:+f;
+const n=k=>k==='all'?all.length:k==='late'?all.filter(x=>pLate(x.p)).length:all.filter(x=>x.p.st===k).length;
+const keep=p=>fn==='all'||(fn==='late'?pLate(p):p.st===fn);
+const waiting=lv.filter(j=>j.stage===2);
+const pj=lv.filter(j=>(j.parts||[]).length||j.stage===2);
+const plab=k=>k==='r'?(ui.pr==='all'?'All ('+pj.length+')':ui.pr):(ui.pm==='all'?'All ('+pj.length+')':ui.pm==='none'?'Unassigned ('+pj.filter(j=>!j.m.length).length+')':MECH[ui.pm]+' ('+pj.filter(j=>j.m.includes(+ui.pm)).length+')');
+const lst=k=>{if(ui.po!==k)return '';const o=k==='r'?pj.map(j=>[j.reg,j.reg+' ('+(j.parts||[]).length+')']):MECH.map((m,i)=>[i,m+' ('+pj.filter(j=>j.m.includes(i)).length+')']).concat([['none','Unassigned ('+pj.filter(j=>!j.m.length).length+')']]);const cur=k==='r'?ui.pr:ui.pm;return `<div class="fl" style="margin-bottom:10px">${[['all','All ('+pj.length+')']].concat(o).map(x=>`<button class="fc ${String(cur)===String(x[0])?'on':''}" data-a="pflt" data-k="${k}" data-v="${x[0]}">${x[1]}</button>`).join('')}</div>`};
+const jl=lv.filter(j=>(j.parts||[]).length||j.stage===2).filter(j=>fn==='all'||(j.parts||[]).some(keep)).filter(j=>(ui.pr==='all'||j.reg===ui.pr)&&(ui.pm==='all'||(ui.pm==='none'?!j.m.length:j.m.includes(+ui.pm)))).sort((a,b)=>(b.stage===2)-(a.stage===2)||a.id-b.id);
+const chips=[['all','All ('+n('all')+')','var(--ink)'],[0,PST[0]+' ('+n(0)+')',PC[0]],[1,PST[1]+' ('+n(1)+')',PC[1]],[2,PST[2]+' ('+n(2)+')',PC[2]],[3,PST[3]+' ('+n(3)+')',PC[3]],['late','Late from supplier ('+n('late')+')','var(--red)']];
+return `<div class="tiles"><div class="tile" style="border-color:var(--s2)"><b style="color:var(--s2)">${waiting.length}</b>Cars waiting for parts</div>
+<div class="tile bad ${n(0)?'hot':''}"><b>${n(0)}</b>Parts still to order</div>
+<div class="tile"><b>${n(1)+n(2)}</b>Parts on order</div>
+<div class="tile bad ${n('late')?'hot':''}"><b>${n('late')}</b>Late from supplier</div>
+<div class="tile ready"><b>${n(3)}</b>Parts arrived</div></div>
+<div class="fbar" style="margin-bottom:6px"><div class="row2">${[['r','Car reg',ic('<path d="M3 16v-4l2-5h14l2 5v4zM3 16v2M21 16v2"/><circle cx="7.5" cy="15" r="1.3"/><circle cx="16.5" cy="15" r="1.3"/>')],['m','Mechanic',ic('<path d="M3 17h18M5 17a7 7 0 0 1 14 0M12 6v5M9 20h6"/>')]].map(x=>`<button class="ghost ${ui.po===x[0]?'sel':''}" data-a="popen" data-k="${x[0]}">${x[2]}${x[1]}<small>${plab(x[0])}</small></button>`).join('')}</div>${ui.pr!=='all'||ui.pm!=='all'?'<div class="row2"><button class="ghost" data-a="pclr">Clear car and mechanic filters</button></div>':''}${lst('r')}${lst('m')}</div>
+<div class="fl" style="margin-bottom:14px">${chips.map(c=>`<button class="fc ${String(f)===String(c[0])?'on':''}" style="--c:${c[2]}" data-a="pf" data-v="${c[0]}">${c[1]}</button>`).join('')}</div>
+<div class="grid pgrid">${jl.map(j=>{const pl=j.parts||[];return `<div class="card ${late(j)?'late':''}" style="--c:${col(j.stage)}">
+<div class="top"><div>${plate(j)}<div class="job">Job ${j.id} · ${j.cust}</div></div><span class="badge">${ST[j.stage]}</span></div>
+<div class="car">${j.car}</div><div class="sub">${j.work}</div>
+${j.stage===2?`<div class="${late(j)?'warn':'sub'}" style="margin-top:6px">${waitTxt(j)}${late(j)?' (overdue)':''}</div>`:''}
+${j.stage===2&&!pl.length?'<div class="warn" style="margin-top:6px">No parts recorded. Add the part so it can be chased.</div>':''}
+${pl.filter(keep).map(prow(j)).join('')}
+${j.stage===2&&allIn(j)?`<button class="go" style="--n:var(--s3);margin-top:12px" data-a="pmove" data-id="${j.id}">All parts in: move to ${ST[3]}${ic('<path d="M5 12h14M13 6l6 6-6 6"/>')}</button>`:''}
+<div class="row2"><button class="ghost" data-a="padd" data-id="${j.id}">${ic('<path d="M12 5v14M5 12h14"/>')}Add a part</button></div>
+${ui.padd===j.id?`<div class="fl" style="margin-top:10px">${PRE.map((x,i)=>`<button class="fc" data-a="pnew" data-id="${j.id}" data-n="${i}">${x}</button>`).join('')}</div>`:''}</div>`}).join('')||'<div class="empty">No parts match this filter.</div>'}</div>`}
+function workshop(){
+const l=live();
+return `${filters()}<div class="grid">${vis().sort((a,b)=>a.stage-b.stage||a.id-b.id).map(j=>`<div class="card ${late(j)?'late':''}" style="--c:${col(j.stage)};--n:${j.stage<4?col(j.stage+1):'#444'}">
+<div class="top"><div>${plate(j)}<div class="job">Job ${j.id}</div></div><span class="badge">${ST[j.stage]}</span></div>
+<div class="car">${j.car}</div><div class="sub">${j.work}</div>
+${prog(j)}
+${j.stage===2?`<div class="${late(j)?'warn':'sub'}">${waitTxt(j)}${late(j)?' (overdue)':''}</div>`:''}
+<div class="mechs">${MECH.map((m,i)=>`<button class="mech ${j.m.includes(i)?'on':''}" data-a="mech" data-id="${j.id}" data-i="${i}">${m}</button>`).join('')}</div>
+<button class="go" data-a="next" data-id="${j.id}">${j.stage<4?'Move to: '+ST[j.stage+1]+ic('<path d="M5 12h14M13 6l6 6-6 6"/>'):'Mark as collected'}</button>
+${j.stage>0?`<div class="row2"><button class="ghost" data-a="back" data-id="${j.id}">${ic('<path d="M19 12H5M11 6l-6 6 6 6"/>')}Back to: ${ST[j.stage-1]}</button></div>`:''}</div>`).join('')||'<div class="empty">No cars match these filters.</div>'}</div>`}
+
+const msg=j=>`Hi ${j.cust}, your ${j.car} (${j.reg}) is ready to collect from Kehoe’s${j.del?'. We will be in touch to arrange delivery':''}.${bal(j)>0?' Balance due: '+eur(bal(j))+'.':''}`;
+const orow=j=>{const si=j.stage;return `<div class="orow ${late(j)?'late':''}" style="--c:${col(si)}">
+<div class="ogrid">
+<div><span class="reg">${j.reg}</span><div class="sub">Job ${j.id} · ${j.car}</div></div>
+<div><b>${j.cust}</b><div class="sub">${j.work}</div><div class="sub">${mechTxt(j)}</div></div>
+<div><div class="sub">In this stage ${ago(j.at).replace(' ago','')}</div>${si===2?`<div class="${late(j)?'warn':'sub'}">${waitTxt(j)}${late(j)?' (overdue)':''}</div>`:''}<div class="sub ${quiet(j)&&si<4?'warn':''}">Customer updated ${ago(j.lc)}</div></div>
+<div class="money"><div><small>Quote</small><b>${eur(j.cost)}</b></div><div><small>Paid</small><b>${eur(j.paid)}</b></div><div><small>Balance</small><b class="${bal(j)>0&&si===4?'warn':''}">${eur(bal(j))}</b></div><span class="pill p${ps(j)}">${PS[ps(j)]}</span></div>
+</div>
+${si===4&&bal(j)>0?`<div class="warn" style="margin-top:8px">${eur(bal(j))} to collect before handover.</div>`:''}
+<div class="oact">
+${si===4?`<button class="ghost ok" data-a="notify" data-id="${j.id}">${ic('<path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4zM10 21h4"/>')}${j.nt?'Notified '+ago(j.nt)+' · send again':'Notify customer: car is ready'}</button>`:''}
+<button class="ghost" data-a="paid" data-id="${j.id}">Update payment: ${PS[ps(j)]}</button>
+<button class="ghost" data-a="pay" data-id="${j.id}">Pay by: ${PAY[j.pay]}</button>
+<button class="ghost" data-a="del" data-id="${j.id}">${j.del?'Delivery':'Collection'}</button>
+<button class="ghost sel" data-a="called" data-id="${j.id}">Customer updated</button>
+${si===4?`<button class="ghost sel" data-a="coll" data-id="${j.id}" style="background:var(--s4);border-color:var(--s4);color:#fff">Collected</button>`:''}
+</div>
+${si===4&&j.nt?`<div class="sent"><b>Message sent (sample, no real text sent)</b><br>${msg(j)}</div>`:''}</div>`};
+function office(){
+const l=live(),wp=l.filter(j=>j.stage===2),ready=l.filter(j=>j.stage===4),lt=l.filter(late),qt=l.filter(j=>quiet(j)&&j.stage<4);
+return `<div class="tiles">
+<div class="tile ready"><b>${ready.length}</b>Ready, not yet collected</div>
+<div class="tile" style="border-color:var(--s2)"><b style="color:var(--s2)">${wp.length}</b>Waiting for parts</div>
+<div class="tile bad ${lt.length?'hot':''}"><b>${lt.length}</b>Waiting for parts over 2 days</div>
+<div class="tile bad ${qt.length?'hot':''}"><b>${qt.length}</b>No customer update in 2+ days</div>
+<div class="tile"><b>${l.length}</b>Cars in today</div>
+<div class="tile"><b>${eur(l.reduce((s,j)=>s+bal(j),0))}</b>Balance outstanding</div>
+<div class="tile bad ${ready.some(j=>bal(j)>0)?'hot':''}"><b>${eur(ready.reduce((s,j)=>s+bal(j),0))}</b>Owed on ready cars</div></div>`+filters()+
+ST.map((s,si)=>{if(ui.f.s!=='all'&&ui.f.s!=si)return '';const g=vis().filter(j=>j.stage===si);return `<section class="grp" style="--c:${col(si)}"><div class="gh"><span class="spill">${s}</span><span class="cnt">${g.length} car${g.length==1?'':'s'}</span></div>${g.map(orow).join('')||'<div class="empty">No cars at this stage.</div>'}</section>`}).join('')}
+
+function pad(){
+const num='1234567890'.split(''),let_='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const keys=ui.field==='id'?num:num.concat(let_);
+return `<div class="keys ${ui.field==='id'?'num':''}">${keys.map(k=>`<button class="key" data-a="key" data-k="${k}">${k}</button>`).join('')}<button class="key w" data-a="del1">Delete</button><button class="key w" data-a="clr">Clear</button></div>`}
+
+function customer(){
+const j=ui.found;
+if(j)return `<div class="phone"><div class="panel" style="--c:${col(j.stage)}">
+<div class="top"><div><h2>${j.car}</h2>${plate(j)}</div><span class="badge" style="--c:${col(j.stage)}">${ST[j.stage]}</span></div>
+<div class="note">${note(j)}</div>
+<div class="paybox"><div class="ph2">Payment summary <span class="pill p${ps(j)}">${PS[ps(j)]}</span></div>
+<div class="money"><div><small>Quote</small><b>${eur(j.cost)}</b></div><div><small>Paid so far</small><b>${eur(j.paid)}</b></div><div><small>Still to pay</small><b class="${bal(j)>0&&j.stage===4?'warn':''}">${eur(bal(j))}</b></div></div>
+<div class="sub">${bal(j)<=0?'Nothing more to pay. Thank you.':j.stage===4?'Please pay the balance when you collect your car'+(j.pay?' ('+PAY[j.pay].toLowerCase()+')':'')+'.':'The balance is due when your car is ready.'}</div></div>
+<ul class="steps">${ST.map((s,i)=>`<li style="--c:${col(i)}" class="${i<j.stage?'done':i==j.stage?'cur':''}">${s}</li>`).join('')}</ul>
+<div class="sub">${j.m.length?mechTxt(j)+(j.m.length>1?' are':' is')+' working on your car.':''}<br>Last update: ${ago(j.at)}. Job ${j.id}.</div>
+<div class="row2" style="margin-top:14px"><button class="ghost" data-a="lookup-back">Look up another car</button></div></div></div>`;
+return `<div class="wide"><div class="panel"><div class="eyebrow">Customer portal preview</div><h2>Check your car’s progress</h2><div class="sub">Enter both details from your job card. Only the matching job’s status is shown. Your update opens automatically once both details match.</div>
+<div class="lk" style="margin-top:14px"><div><label>Job number</label><button class="fbtn ${ui.field==='id'?'act':''}" data-a="field" data-f="id" style="width:100%">${ui.id||'<span class="ph">e.g. 4821</span>'}</button></div><div><label>Vehicle registration</label><button class="fbtn ${ui.field==='reg'?'act':''}" data-a="field" data-f="reg" style="width:100%">${ui.reg||'<span class="ph">e.g. 191WX2045</span>'}</button></div><button class="find" data-a="find">Find my car →</button></div>
+${ui.err?`<div class="err">${ui.err}</div>`:''}${pad()}
+<div class="sub" style="margin:14px 0 8px">Sample lookup shortcuts. Tap to preview without typing:</div>
+<div class="fl">${live().map(j=>`<button class="fc" data-a="quick" data-id="${j.id}">${j.id} · ${j.reg}</button>`).join('')}</div></div></div>`}
+
+function render(){
+const T=[['workshop','Workshop',ic('<path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7 6.3 21l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/>')],['parts','Parts',ic('<path d="M21 8l-9-5-9 5v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/>')],['customer','Customer',ic('<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>')],['office','Office',ic('<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9zM9 12h6M9 16h6"/>')]];
+document.getElementById('tabs').innerHTML=T.map(t=>`<button class="tab" role="tab" aria-selected="${ui.tab===t[0]}" data-a="tab" data-t="${t[0]}">${t[2]}${t[1]}</button>`).join('');
+document.getElementById('app').innerHTML=({workshop,parts,customer,office})[ui.tab]()+`<div class="foot">Alpha build. Changes are saved on this device only.</div>`}
+
+document.addEventListener('click',e=>{
+const b=e.target.closest('[data-a]');if(!b)return;
+const a=b.dataset.a,j=find(b.dataset.id),now=Date.now();
+if(a==='tab'){ui.tab=b.dataset.t;ui.found=null;ui.err=''}
+else if(a==='reset'){jobs=seed();save()}
+else if(a==='mech'){const i=+b.dataset.i;j.m=j.m.includes(i)?j.m.filter(x=>x!==i):j.m.concat(i)}
+else if(a==='next'){if(j.stage<4){j.stage++;j.at=now}else j.done=true}
+else if(a==='back'){j.stage--;j.at=now}
+else if(a==='pay')j.pay=(j.pay+1)%PAY.length;
+else if(a==='del')j.del=j.del?0:1;
+else if(a==='paid'){const s=ps(j);j.paid=s===0?Math.round(j.cost/2):s===1?j.cost:0}
+else if(a==='notify'){j.nt=now;j.lc=now}
+else if(a==='pf')ui.pf=b.dataset.v;
+else if(a==='popen')ui.po=ui.po===b.dataset.k?'':b.dataset.k;
+else if(a==='pflt'){if(b.dataset.k==='r')ui.pr=b.dataset.v;else ui.pm=b.dataset.v;ui.po=''}
+else if(a==='pclr'){ui.pr='all';ui.pm='all'}
+else if(a==='padd')ui.padd=ui.padd==j.id?0:j.id;
+else if(a==='pnew'){j.parts.push({id:now+Math.floor(Math.random()*1000),name:PRE[+b.dataset.n],sup:SUP[0],st:0,ord:0,eta:0});ui.padd=0}
+else if(a==='pnext'){const p=j.parts.find(x=>x.id==b.dataset.p);if(p.st<3){p.st++;if(p.st===1){p.ord=now;p.eta=now+2*D}}}
+else if(a==='pback'){const p=j.parts.find(x=>x.id==b.dataset.p);if(p.st>0){p.st--;if(p.st===0){p.ord=0;p.eta=0}}}
+else if(a==='peta'){const p=j.parts.find(x=>x.id==b.dataset.p);p.eta+=(+b.dataset.d)*D}
+else if(a==='psup'){const p=j.parts.find(x=>x.id==b.dataset.p);p.sup=SUP[(SUP.indexOf(p.sup)+1)%SUP.length]}
+else if(a==='pdel'){j.parts=j.parts.filter(x=>x.id!=b.dataset.p)}
+else if(a==='pmove'){j.stage=3;j.at=now}
+else if(a==='called')j.lc=now;
+else if(a==='coll')j.done=true;
+else if(a==='flt'){ui.f[b.dataset.k]=b.dataset.v;ui.fo=''}
+else if(a==='fopen')ui.fo=ui.fo===b.dataset.k?'':b.dataset.k;
+else if(a==='fclr')ui.f={s:'all',t:'all',m:'all'};
+else if(a==='quick'){ui.found=j;ui.err=''}
+else if(a==='field')ui.field=b.dataset.f;
+else if(a==='key'){const k=b.dataset.k;if(ui.field==='id'){if(ui.id.length<6)ui.id+=k;if(ui.id.length===4)ui.field='reg'}else if(ui.reg.length<10)ui.reg+=k;ui.err='';const m=jobs.find(x=>String(x.id)===ui.id&&x.reg===ui.reg&&!x.done);if(m)ui.found=m}
+else if(a==='del1'){ui[ui.field]=ui[ui.field].slice(0,-1)}
+else if(a==='clr'){ui[ui.field]=''}
+else if(a==='find'){const m=jobs.find(x=>String(x.id)===ui.id&&x.reg===ui.reg.toUpperCase());
+ if(m&&!m.done){ui.found=m;ui.err=''}else ui.err='We could not find that job. Check the job number and registration on your job card, or call the garage.'}
+else if(a==='lookup-back'){ui.found=null;ui.id='';ui.reg='';ui.field='id'}
+save();render()});
+setInterval(render,60000);
+render();
+</script>
+</body>
+</html>
+
+</body></html>
