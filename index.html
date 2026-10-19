@@ -133,6 +133,24 @@ main{padding:8px 12px 40px;max-width:1200px;margin:auto}
 .prow .oact{margin-top:8px}
 .card .ghost svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-5px;margin-right:8px}
 @media (max-width:560px){.tab{flex-direction:column;gap:2px;font-size:.8rem;min-height:62px}.tab svg{width:24px;height:24px}}
+.ch{font-size:1.05rem;margin:16px 0 8px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.cal2{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.cday{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;min-height:110px;min-width:0}
+.cday.today{border:3px solid var(--haz)}
+.cday.wk{background:var(--bg)}
+.cdh{font-weight:800;margin-bottom:6px}
+.cnone{opacity:.7}
+.citem{background:var(--bg);border-left:6px solid var(--c);border-radius:10px;padding:8px 10px;margin-top:8px;font-size:.9rem;min-width:0}
+.cal2 .citem{margin-top:0;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--c)}
+.cday.wk .citem{background:var(--card)}
+.citem .ptop{flex-wrap:wrap}
+.citem .ptop b{font-size:.95rem}
+.citem .pst{font-size:.7rem;padding:2px 8px}
+.citem .ghost{min-height:48px;width:100%;margin-top:6px;flex:none}
+.citem.late,.cal2 .citem.late{background:var(--redbg);border-left-color:var(--red)}
+.ghost.gi svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-5px;margin:0 6px}
+@media (max-width:900px){.cal{grid-template-columns:1fr}.cday{min-height:0}}
 .foot{text-align:center;color:var(--mute);font-size:.8rem;margin-top:30px}
 </style>
 </head>
@@ -153,7 +171,7 @@ const KEY='kehoes-hub-alpha-v1';
 const D=864e5,H=36e5;
 const col=s=>`var(--s${s})`;
 const SUP=['Wexford Auto Factors','Dublin Parts Hub','Cork Trade Supplies','Main dealer'];
-const PT={4823:[['Clutch kit',SUP[1],1,72,-20],['Flywheel bolts',SUP[0],3,70,-60]],4825:[['Timing belt kit',SUP[1],2,26,20],['Water pump',SUP[0],0,0,null]],4828:[['Exhaust centre section',SUP[2],1,5,30]]};
+const PT={4823:[['Clutch kit',SUP[1],1,72,-20],['Flywheel bolts',SUP[0],3,70,-60]],4825:[['Timing belt kit',SUP[1],2,26,20],['Water pump',SUP[0],0,0,null]],4828:[['Exhaust centre section',SUP[2],1,5,30]],4824:[['Oxygen sensor',SUP[0],1,3,96]],4826:[['Air filter',SUP[2],2,20,72]]};
 function seed(){const n=Date.now();const j=(id,reg,car,cust,work,stage,m,ago,contact,part,pay,del)=>({id,reg,car,cust,work,stage,m,at:n-ago,lc:n-contact,part,pay,del,done:false});
 return[
 j(4821,'191WX2045','2019 Ford Focus','M. Doyle','Full service and brake pads',4,[0],5*H,4*H,'',1,0),
@@ -163,10 +181,10 @@ j(4824,'201WX1190','2020 Nissan Qashqai','P. Murphy','Diagnostics, warning light
 j(4825,'131WD6524','2013 Opel Astra','K. Kinsella','Timing belt',2,[2],1*D+2*H,1*D,'timing belt kit',3,0),
 j(4826,'221WX507','2022 Hyundai Tucson','R. Nolan','Annual service',0,[],20*60000,20*60000,'',1,0),
 j(4827,'182C9921','2018 Skoda Octavia','E. Roche','Brake discs and pads',4,[4],1*D+3*H,5*D,'',2,1),
-j(4828,'162WX3402','2016 Renault Clio','T. Furlong','Exhaust repair',2,[0,4],4*H,2*H,'exhaust section',0,0)].map(x=>{const c={4821:[285,0],4822:[90,0],4823:[890,445],4824:[65,0],4825:[520,260],4826:[210,0],4827:[340,340],4828:[185,0]}[x.id];return{...x,cost:c[0],paid:c[1],parts:(PT[x.id]||[]).map((p,i)=>({id:x.id*10+i,name:p[0],sup:p[1],st:p[2],ord:p[3]?Date.now()-p[3]*H:0,eta:p[4]==null?0:Date.now()+p[4]*H}))}})}
-let jobs,ui={tab:'workshop',f:{s:'all',t:'all',m:'all'},fo:false,pf:'all',padd:0,pr:'all',pm:'all',po:'',field:'id',id:'',reg:'',found:null,err:''};
+j(4828,'162WX3402','2016 Renault Clio','T. Furlong','Exhaust repair',2,[0,4],4*H,2*H,'exhaust section',0,0)].map(x=>{const c={4821:[285,0],4822:[90,0],4823:[890,445],4824:[65,0],4825:[520,260],4826:[210,0],4827:[340,340],4828:[185,0]}[x.id];return{...x,cost:c[0],paid:c[1],v:2,parts:(PT[x.id]||[]).map((p,i)=>({id:x.id*10+i,name:p[0],sup:p[1],st:p[2],ord:p[3]?Date.now()-p[3]*H:0,eta:p[4]==null?0:Date.now()+p[4]*H}))}})}
+let jobs,ui={tab:'workshop',f:{s:'all',t:'all',m:'all'},fo:false,pf:'all',padd:0,pr:'all',pm:'all',po:'',pv:'list',cw:0,field:'id',id:'',reg:'',found:null,err:''};
 try{jobs=JSON.parse(localStorage.getItem(KEY))}catch(e){}
-if(!Array.isArray(jobs)||jobs.some(x=>x.cost==null||!x.parts))jobs=seed();
+if(!Array.isArray(jobs)||jobs.some(x=>x.cost==null||!x.parts||x.v!==2))jobs=seed();
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(jobs))}catch(e){}};
 const days=t=>(Date.now()-t)/D;
 const PS=['Unpaid','Deposit paid','Paid in full'];
@@ -200,14 +218,31 @@ const PST=['To order','Ordered','On the way','Arrived'];
 const PC=['#64748b','#c98f00','#0b84c6','#19903f'];
 const PNEXT=['Mark as ordered','Mark as on the way','Mark as arrived'];
 const PRE=['Brake pads','Brake discs','Clutch kit','Timing belt kit','Battery','Exhaust section','Alternator','Tyres','Filters and oil','Other part'];
-const pLate=p=>p.st>0&&p.st<3&&p.eta&&p.eta<Date.now();
-const eD=t=>{const d=Math.round((t-Date.now())/D),a=Math.abs(d),u=a+(a==1?' day':' days');return d<0?u+' late':d===0?'due today':'due in '+u};
+const pLate=p=>p.st>0&&p.st<3&&p.eta&&day0(p.eta)<day0(Date.now());
+const eD=t=>{const d=Math.round((day0(t)-day0(Date.now()))/D),a=Math.abs(d),u=a+(a==1?' day':' days');return d<0?u+' late':d===0?'due today':'due in '+u};
 const sh=t=>new Date(t).toLocaleDateString('en-IE',{weekday:'short',day:'numeric',month:'short'});
 const etaTxt=p=>p.st===0?'Not ordered yet':p.st===3?'Arrived':'ETA '+sh(p.eta)+' ('+eD(p.eta)+')';
 const prow=j=>p=>{const d=`data-id="${j.id}" data-p="${p.id}"`;return `<div class="prow ${pLate(p)?'late':''}" style="--c:${PC[p.st]}"><div class="ptop"><b>${p.name}</b><span class="pst">${PST[p.st]}</span></div>
 <div class="sub ${pLate(p)?'warn':''}">${p.sup} · ${etaTxt(p)}</div>
 <div class="oact">${p.st<3?`<button class="ghost ok" data-a="pnext" ${d} style="background:${PC[p.st+1]};border-color:${PC[p.st+1]};color:#fff">${PNEXT[p.st]}</button>`:''}${p.st===1||p.st===2?`<button class="ghost" data-a="peta" ${d} data-d="-1">ETA 1 day earlier</button><button class="ghost" data-a="peta" ${d} data-d="1">ETA 1 day later</button>`:''}${p.st<3?`<button class="ghost" data-a="psup" ${d}>Supplier: ${p.sup}</button>`:''}${p.st>0?`<button class="ghost" data-a="pback" ${d}>${ic('<path d="M19 12H5M11 6l-6 6 6 6"/>')}Back to: ${PST[p.st-1]}</button>`:''}<button class="ghost" data-a="pdel" ${d}>Remove</button></div></div>`};
-function parts(){
+const DN=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const day0=t=>{const d=new Date(t);d.setHours(0,0,0,0);return d.getTime()};
+const pvTog=()=>`<div class="row2" style="margin:0 0 14px">${[['list','List',ic('<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>')],['cal','Calendar',ic('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>')]].map(x=>`<button class="ghost gi ${ui.pv===x[0]?'sel':''}" data-a="pview" data-v="${x[0]}">${x[2]}${x[1]}</button>`).join('')}</div>`;
+const citem=(x,od)=>{const d=`data-id="${x.j.id}" data-p="${x.p.id}"`;return `<div class="citem ${od?'late':''}" style="--c:${PC[x.p.st]}"><div class="ptop"><b>${x.p.name}</b><span class="pst">${PST[x.p.st]}</span></div><div class="sub">${x.j.reg} · ${x.j.cust}</div><div class="sub ${od?'warn':''}">${x.p.sup}${od?' · '+eD(x.p.eta):''}</div><button class="ghost ok" data-a="parr" ${d}>Mark as arrived</button>${od?`<button class="ghost" data-a="ptoday" ${d}>Chase: now due today</button>`:''}</div>`};
+function partsCal(){
+const lv=live(),all=lv.flatMap(j=>(j.parts||[]).map(p=>({p,j}))),exp=all.filter(x=>x.p.st===1||x.p.st===2),t0=day0(Date.now());
+const base=new Date();base.setHours(0,0,0,0);base.setDate(base.getDate()-((base.getDay()+6)%7)+ui.cw*7);
+const ds=[];for(let i=0;i<14;i++){const d=new Date(base);d.setDate(base.getDate()+i);ds.push(d)}
+const on=d=>exp.filter(x=>x.p.eta&&day0(x.p.eta)>=t0&&new Date(x.p.eta).toDateString()===d.toDateString());
+const od=exp.filter(x=>x.p.eta&&day0(x.p.eta)<t0),toOrd=all.filter(x=>x.p.st===0);
+const nx=exp.filter(x=>x.p.eta&&day0(x.p.eta)>=t0&&day0(x.p.eta)<t0+6.5*D).length,td=exp.filter(x=>x.p.eta&&day0(x.p.eta)===t0).length;
+return `${pvTog()}<div class="tiles"><div class="tile ready"><b>${td}</b>Arriving today</div><div class="tile"><b>${nx}</b>Arriving in the next 7 days</div><div class="tile bad ${od.length?'hot':''}"><b>${od.length}</b>Overdue from supplier</div><div class="tile bad ${toOrd.length?'hot':''}"><b>${toOrd.length}</b>Not yet ordered</div></div>
+${od.length?`<h2 class="ch warn">Overdue, chase the supplier</h2><div class="cal2">${od.map(x=>citem(x,1)).join('')}</div>`:''}
+<div class="row2" style="margin:14px 0"><button class="ghost gi" data-a="cnav" data-v="-1">${ic('<path d="M19 12H5M11 6l-6 6 6 6"/>')}Earlier</button><button class="ghost gi sel" data-a="cnav" data-v="0">Today</button><button class="ghost gi" data-a="cnav" data-v="1">Later${ic('<path d="M5 12h14M13 6l6 6-6 6"/>')}</button></div>
+<h2 class="ch">${sh(ds[0])} to ${sh(ds[13])}</h2>
+<div class="cal">${ds.map(d=>{const it=on(d),isT=d.toDateString()===new Date().toDateString(),w=d.getDay()%6===0;return `<div class="cday ${isT?'today':''} ${w?'wk':''}"><div class="cdh">${DN[d.getDay()]} ${d.getDate()} ${d.toLocaleDateString('en-IE',{month:'short'})}${isT?' (today)':''}</div>${it.length?it.map(x=>citem(x,0)).join(''):'<div class="sub cnone">Nothing due</div>'}</div>`}).join('')}</div>
+${toOrd.length?`<h2 class="ch">Not yet ordered (no date)</h2><div class="cal2">${toOrd.map(x=>`<div class="citem" style="--c:${PC[0]}"><div class="ptop"><b>${x.p.name}</b><span class="pst">${PST[0]}</span></div><div class="sub">${x.j.reg} · ${x.j.cust}</div><button class="ghost ok" data-a="pnext" data-id="${x.j.id}" data-p="${x.p.id}" style="background:${PC[1]};border-color:${PC[1]};color:#fff">${PNEXT[0]}</button></div>`).join('')}</div>`:''}`}
+function parts(){if(ui.pv==='cal')return partsCal();
 const lv=live(),all=lv.flatMap(j=>(j.parts||[]).map(p=>({p,j})));
 const f=ui.pf,fn=f==='all'||f==='late'?f:+f;
 const n=k=>k==='all'?all.length:k==='late'?all.filter(x=>pLate(x.p)).length:all.filter(x=>x.p.st===k).length;
@@ -218,7 +253,7 @@ const plab=k=>k==='r'?(ui.pr==='all'?'All ('+pj.length+')':ui.pr):(ui.pm==='all'
 const lst=k=>{if(ui.po!==k)return '';const o=k==='r'?pj.map(j=>[j.reg,j.reg+' ('+(j.parts||[]).length+')']):MECH.map((m,i)=>[i,m+' ('+pj.filter(j=>j.m.includes(i)).length+')']).concat([['none','Unassigned ('+pj.filter(j=>!j.m.length).length+')']]);const cur=k==='r'?ui.pr:ui.pm;return `<div class="fl" style="margin-bottom:10px">${[['all','All ('+pj.length+')']].concat(o).map(x=>`<button class="fc ${String(cur)===String(x[0])?'on':''}" data-a="pflt" data-k="${k}" data-v="${x[0]}">${x[1]}</button>`).join('')}</div>`};
 const jl=lv.filter(j=>(j.parts||[]).length||j.stage===2).filter(j=>fn==='all'||(j.parts||[]).some(keep)).filter(j=>(ui.pr==='all'||j.reg===ui.pr)&&(ui.pm==='all'||(ui.pm==='none'?!j.m.length:j.m.includes(+ui.pm)))).sort((a,b)=>(b.stage===2)-(a.stage===2)||a.id-b.id);
 const chips=[['all','All ('+n('all')+')','var(--ink)'],[0,PST[0]+' ('+n(0)+')',PC[0]],[1,PST[1]+' ('+n(1)+')',PC[1]],[2,PST[2]+' ('+n(2)+')',PC[2]],[3,PST[3]+' ('+n(3)+')',PC[3]],['late','Late from supplier ('+n('late')+')','var(--red)']];
-return `<div class="tiles"><div class="tile" style="border-color:var(--s2)"><b style="color:var(--s2)">${waiting.length}</b>Cars waiting for parts</div>
+return `${pvTog()}<div class="tiles"><div class="tile" style="border-color:var(--s2)"><b style="color:var(--s2)">${waiting.length}</b>Cars waiting for parts</div>
 <div class="tile bad ${n(0)?'hot':''}"><b>${n(0)}</b>Parts still to order</div>
 <div class="tile"><b>${n(1)+n(2)}</b>Parts on order</div>
 <div class="tile bad ${n('late')?'hot':''}"><b>${n('late')}</b>Late from supplier</div>
@@ -315,6 +350,10 @@ else if(a==='del')j.del=j.del?0:1;
 else if(a==='paid'){const s=ps(j);j.paid=s===0?Math.round(j.cost/2):s===1?j.cost:0}
 else if(a==='notify'){j.nt=now;j.lc=now}
 else if(a==='pf')ui.pf=b.dataset.v;
+else if(a==='pview')ui.pv=b.dataset.v;
+else if(a==='cnav')ui.cw=b.dataset.v==='0'?0:ui.cw+(+b.dataset.v);
+else if(a==='parr'){const p=j.parts.find(x=>x.id==b.dataset.p);p.st=3}
+else if(a==='ptoday'){const p=j.parts.find(x=>x.id==b.dataset.p);p.eta=now}
 else if(a==='popen')ui.po=ui.po===b.dataset.k?'':b.dataset.k;
 else if(a==='pflt'){if(b.dataset.k==='r')ui.pr=b.dataset.v;else ui.pm=b.dataset.v;ui.po=''}
 else if(a==='pclr'){ui.pr='all';ui.pm='all'}
